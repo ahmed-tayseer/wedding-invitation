@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Wedding Invitation</title>
+    <meta name="description" content="You're invited to our wedding" />
+
+    <!-- Fonts: elegant serif + calligraphic Arabic display, clean sans for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ======================= UTILITY FLOATING BUTTONS ======================= -->
+    <div class="utility-buttons" aria-hidden="false">
+      <button id="lang-toggle" class="util-btn" type="button" aria-label="Switch language">
+        <span id="lang-toggle-label">AR</span>
+      </button>
+      <button
+        id="music-toggle"
+        class="util-btn"
+        type="button"
+        aria-label="Toggle background music"
+        aria-pressed="false"
+        hidden
+      >
+        <svg class="icon icon-music-on" viewBox="0 0 24 24" width="18" height="18">
+          <path fill="currentColor" d="M9 18V5l12-2v13" />
+          <circle fill="currentColor" cx="6" cy="18" r="3" />
+          <circle fill="currentColor" cx="18" cy="16" r="3" />
+        </svg>
+        <svg class="icon icon-music-off" viewBox="0 0 24 24" width="18" height="18" hidden>
+          <path fill="currentColor" d="M9 18V5l12-2v13" />
+          <circle fill="currentColor" cx="6" cy="18" r="3" />
+          <circle fill="currentColor" cx="18" cy="16" r="3" />
+          <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- ======================= ENVELOPE INTRO ======================= -->
+    <div id="envelope-screen" class="envelope-screen">
+      <div class="envelope-wrap">
+        <button id="envelope" class="envelope" type="button" aria-label="Open invitation">
+          <span class="envelope-back"></span>
+          <span class="envelope-card">
+            <span class="envelope-card-motif" aria-hidden="true">
+              <svg viewBox="0 0 100 100" width="46" height="46">
+                <path
+                  fill="none"
+                  stroke="#B08D57"
+                  stroke-width="1.6"
+                  d="M50,8 L58,42 L92,50 L58,58 L50,92 L42,58 L8,50 L42,42 Z"
+                />
+              </svg>
+            </span>
+            <span class="envelope-card-names" id="envelope-names">&nbsp;</span>
+          </span>
+          <span class="envelope-flap"></span>
+          <span class="envelope-seal" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="34" height="34">
+              <path fill="#B08D57" d="M50,10 L59,41 L91,50 L59,59 L50,90 L41,59 L9,50 L41,41 Z" />
+            </svg>
+          </span>
+        </button>
+        <p class="envelope-hint" id="envelope-hint">Tap the envelope to open your invitation</p>
+      </div>
+    </div>
+
+    <!-- ======================= MAIN SITE ======================= -->
+    <div id="site" class="site" hidden>
+      <!-- ---------- HERO ---------- -->
+      <section id="hero" class="section hero-section">
+        <div class="section-inner hero-inner">
+          <p class="eyebrow" id="hero-eyebrow">The Wedding Of</p>
+          <h1 class="display-title" id="hero-title">Wedding Day</h1>
+          <p class="hero-names" id="hero-names">Ahmed &amp; Sara</p>
+          <div class="ornament" aria-hidden="true">
+            <svg viewBox="0 0 200 24" width="140" height="16">
+              <line x1="0" y1="12" x2="80" y2="12" stroke="#B08D57" stroke-width="1" />
+              <path
+                fill="none"
+                stroke="#B08D57"
+                stroke-width="1.4"
+                d="M100,4 L106,10.5 L100,17 L94,10.5 Z"
+              />
+              <line x1="120" y1="12" x2="200" y2="12" stroke="#B08D57" stroke-width="1" />
+            </svg>
+          </div>
+          <p class="hero-date" id="hero-date">Date</p>
+        </div>
+
+        <img src="./assets/right-flowers2.png" class="right-flowers" alt="" />
+        <img src="./assets/left-flowers3.png" class="left-flowers" alt="" />
+      </section>
+
+      <!-- d="M0,30 Q50,11 100,20 Q150,41 200,34 Q250,11 300,16 Q350,37 400,30 Q450,7 500,12 Q550,34 600,28 Q650,9 700,18 Q750,39 800,32 Q850,9 900,14 Q950,34 1000,26 Q1050,9 1100,20 Q1150,38 1200,28 L1200,0 L0,0 Z" -->
+      <div class="torn-divider torn-divider--to-alt" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path
+            fill="currentColor"
+            d="M0,22 
+         C 40,20 70,28 110,25 
+         C 150,22 180,14 220,17 
+         C 260,20 285,31 325,29 
+         C 365,27 395,19 435,21 
+         C 475,23 505,33 545,30 
+         C 585,27 615,16 655,15 
+         C 695,14 725,25 765,23 
+         C 805,21 835,14 875,17 
+         C 915,20 945,29 985,26 
+         C 1025,23 1065,15 1105,17 
+         C 1145,19 1175,24 1200,21 
+         L 1200,0 L 0,0 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- ---------- GUEST MESSAGE ---------- -->
+      <section id="guest-message" class="section message-section">
+        <div class="section-inner">
+          <!-- <p class="eyebrow" id="guest-eyebrow">—</p> -->
+          <h2 class="section-title" id="guest-message-start">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ</h2>
+          <h2 class="section-title" id="guest-message-title">You're Invited</h2>
+          <p class="body-text centered" id="guest-message-body">—</p>
+        </div>
+      </section>
+
+      <div class="torn-divider torn-divider--to-bg" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path
+            fill="currentColor"
+            d="M0,22 
+         C 40,20 70,28 110,25 
+         C 150,22 180,14 220,17 
+         C 260,20 285,31 325,29 
+         C 365,27 395,19 435,21 
+         C 475,23 505,33 545,30 
+         C 585,27 615,16 655,15 
+         C 695,14 725,25 765,23 
+         C 805,21 835,14 875,17 
+         C 915,20 945,29 985,26 
+         C 1025,23 1065,15 1105,17 
+         C 1145,19 1175,24 1200,21 
+         L 1200,0 L 0,0 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- ---------- COUNTDOWN ---------- -->
+      <section id="countdown" class="section countdown-section">
+        <div class="section-inner">
+          <h2 class="section-title" id="countdown-title">Counting Down</h2>
+          <div class="countdown-grid" id="countdown-grid">
+            <div class="cd-unit">
+              <span class="cd-number" id="cd-days">00</span
+              ><span class="cd-label" id="cd-days-label">Days</span>
+            </div>
+            <div class="cd-unit"><span class="cd-number" id="cd-days">:</span></div>
+            <div class="cd-unit">
+              <span class="cd-number" id="cd-hours">00</span
+              ><span class="cd-label" id="cd-hours-label">Hours</span>
+            </div>
+            <div class="cd-unit"><span class="cd-number" id="cd-days">:</span></div>
+            <div class="cd-unit">
+              <span class="cd-number" id="cd-minutes">00</span
+              ><span class="cd-label" id="cd-minutes-label">Minutes</span>
+            </div>
+            <div class="cd-unit"><span class="cd-number" id="cd-days">:</span></div>
+            <div class="cd-unit">
+              <span class="cd-number" id="cd-seconds">00</span
+              ><span class="cd-label" id="cd-seconds-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="torn-divider torn-divider--to-alt" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path
+            fill="currentColor"
+            d="M0,22 
+         C 40,20 70,28 110,25 
+         C 150,22 180,14 220,17 
+         C 260,20 285,31 325,29 
+         C 365,27 395,19 435,21 
+         C 475,23 505,33 545,30 
+         C 585,27 615,16 655,15 
+         C 695,14 725,25 765,23 
+         C 805,21 835,14 875,17 
+         C 915,20 945,29 985,26 
+         C 1025,23 1065,15 1105,17 
+         C 1145,19 1175,24 1200,21 
+         L 1200,0 L 0,0 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- ---------- SCHEDULE ---------- -->
+      <section id="schedule" class="section schedule-section">
+        <div class="section-inner">
+          <h2 class="section-title" id="schedule-title">Schedule of Events</h2>
+          <ol class="timeline" id="schedule-list"></ol>
+        </div>
+      </section>
+
+      <div class="torn-divider torn-divider--to-bg" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path
+            fill="currentColor"
+            d="M0,22 
+         C 40,20 70,28 110,25 
+         C 150,22 180,14 220,17 
+         C 260,20 285,31 325,29 
+         C 365,27 395,19 435,21 
+         C 475,23 505,33 545,30 
+         C 585,27 615,16 655,15 
+         C 695,14 725,25 765,23 
+         C 805,21 835,14 875,17 
+         C 915,20 945,29 985,26 
+         C 1025,23 1065,15 1105,17 
+         C 1145,19 1175,24 1200,21 
+         L 1200,0 L 0,0 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- ---------- LOCATION ---------- -->
+      <section id="location" class="section location-section">
+        <div class="section-inner">
+          <h2 class="section-title" id="location-title">Venue</h2>
+          <p class="venue-name" id="venue-name">—</p>
+          <p class="venue-address" id="venue-address">—</p>
+          <div class="venue-image-wrap">
+            <img id="venue-image" src="assets/venue-placeholder.svg" alt="Venue" class="venue-image" />
+          </div>
+          <a id="map-link" class="map-card" href="#" target="_blank" rel="noopener">
+            <iframe
+              id="map-embed"
+              class="map-embed"
+              title="Venue map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <span class="map-card-label" id="map-card-label">Open in Google Maps</span>
+          </a>
+        </div>
+      </section>
+
+      <div class="torn-divider torn-divider--to-alt" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path
+            fill="currentColor"
+            d="M0,22 
+         C 40,20 70,28 110,25 
+         C 150,22 180,14 220,17 
+         C 260,20 285,31 325,29 
+         C 365,27 395,19 435,21 
+         C 475,23 505,33 545,30 
+         C 585,27 615,16 655,15 
+         C 695,14 725,25 765,23 
+         C 805,21 835,14 875,17 
+         C 915,20 945,29 985,26 
+         C 1025,23 1065,15 1105,17 
+         C 1145,19 1175,24 1200,21 
+         L 1200,0 L 0,0 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- ---------- DRESS CODE ---------- -->
+      <section id="dresscode" class="section dresscode-section">
+        <div class="section-inner">
+          <h2 class="section-title" id="dresscode-title">Dress Code</h2>
+          <p class="body-text centered" id="dresscode-body">—</p>
+        </div>
+      </section>
+
+      <div class="torn-divider torn-divider--to-bg" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path
+            fill="currentColor"
+            d="M0,22 
+         C 40,20 70,28 110,25 
+         C 150,22 180,14 220,17 
+         C 260,20 285,31 325,29 
+         C 365,27 395,19 435,21 
+         C 475,23 505,33 545,30 
+         C 585,27 615,16 655,15 
+         C 695,14 725,25 765,23 
+         C 805,21 835,14 875,17 
+         C 915,20 945,29 985,26 
+         C 1025,23 1065,15 1105,17 
+         C 1145,19 1175,24 1200,21 
+         L 1200,0 L 0,0 Z"
+          />
+        </svg>
+      </div>
+
+      <!-- ---------- RSVP ---------- -->
+      <!-- <section id="rsvp" class="section rsvp-section">
+        <div class="section-inner">
+          <h2 class="section-title" id="rsvp-title">RSVP</h2>
+          <p class="body-text centered" id="rsvp-subtitle">—</p>
+          <button id="rsvp-open-btn" class="btn-primary" type="button">
+            <span id="rsvp-button-label">RSVP Now</span>
+          </button>
+        </div>
+      </section>
+
+      <div class="torn-divider torn-divider--to-alt" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path
+            fill="currentColor"
+            d="M0,22 
+         C 40,20 70,28 110,25 
+         C 150,22 180,14 220,17 
+         C 260,20 285,31 325,29 
+         C 365,27 395,19 435,21 
+         C 475,23 505,33 545,30 
+         C 585,27 615,16 655,15 
+         C 695,14 725,25 765,23 
+         C 805,21 835,14 875,17 
+         C 915,20 945,29 985,26 
+         C 1025,23 1065,15 1105,17 
+         C 1145,19 1175,24 1200,21 
+         L 1200,0 L 0,0 Z"
+          />
+        </svg>
+      </div> -->
+
+      <!-- ---------- CLOSING ---------- -->
+      <section id="closing" class="section closing-section">
+        <div class="section-inner">
+          <div style="margin-bottom: 64px">
+            <h2 class="section-title" id="rsvp-title">RSVP</h2>
+            <p class="body-text centered" id="rsvp-subtitle">—</p>
+            <button id="rsvp-open-btn" class="btn-primary" type="button">
+              <span id="rsvp-button-label">RSVP Now</span>
+            </button>
+          </div>
+
+          <div class="ornament" aria-hidden="true">
+            <svg viewBox="0 0 200 24" width="140" height="16">
+              <line x1="0" y1="12" x2="80" y2="12" stroke="#B08D57" stroke-width="1" />
+              <path
+                fill="none"
+                stroke="#B08D57"
+                stroke-width="1.4"
+                d="M100,4 L106,10.5 L100,17 L94,10.5 Z"
+              />
+              <line x1="120" y1="12" x2="200" y2="12" stroke="#B08D57" stroke-width="1" />
+            </svg>
+          </div>
+          <p class="closing-line" id="closing-line">Hope to see you there</p>
+          <p class="closing-names" id="closing-names">Ahmed &amp; Sara</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ======================= RSVP MODAL ======================= -->
+    <div id="rsvp-modal" class="modal-overlay" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="rsvp-modal-title">
+        <button id="rsvp-close-btn" class="modal-close" type="button" aria-label="Close">&times;</button>
+        <h3 id="rsvp-modal-title">RSVP</h3>
+
+        <form id="rsvp-form" class="rsvp-form" novalidate>
+          <label class="field">
+            <span id="label-name">Full Name</span>
+            <input type="text" name="name" id="input-name" required autocomplete="off" />
+          </label>
+
+          <label class="field">
+            <span id="label-guests">Number of Guests</span>
+            <input type="number" name="guests" id="input-guests" min="1" max="10" value="1" required />
+          </label>
+
+          <fieldset class="field field-radio">
+            <legend id="label-attending">Will you attend?</legend>
+            <label class="radio-option">
+              <input type="radio" name="attending" value="yes" checked />
+              <span id="label-attending-yes">Joyfully Attending</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="attending" value="no" />
+              <span id="label-attending-no">Regretfully Declining</span>
+            </label>
+          </fieldset>
+
+          <label class="field">
+            <span id="label-message">Message (optional)</span>
+            <textarea name="message" id="input-message" rows="3"></textarea>
+          </label>
+
+          <button type="submit" class="btn-primary" id="rsvp-submit-btn">
+            <span id="rsvp-submit-label">Send RSVP</span>
+          </button>
+
+          <p class="form-status" id="rsvp-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- ======================= BACKGROUND MUSIC ======================= -->
+    <audio id="bg-music" loop preload="none"></audio>
+
+    <!-- ======================= FLOATING BOTTOM NAV ======================= -->
+    <nav id="bottom-nav" class="bottom-nav" hidden aria-label="Section navigation">
+      <ul id="bottom-nav-list" class="bottom-nav-list"></ul>
+    </nav>
+
+    <script src="js/config.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/rsvp.js"></script>
+    <script src="js/envelope.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
