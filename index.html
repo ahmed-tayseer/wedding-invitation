@@ -45,29 +45,46 @@
     </div>
 
     <!-- ======================= ENVELOPE INTRO ======================= -->
+    <!--
+      Full-bleed envelope back: the top/right/bottom/left panels meet at the
+      center in an "X" fold, echoing a hand-folded envelope. A soft gold glow
+      radiates from the wax seal along the seams; the left/right panels carry
+      an embossed floral overlay. The top panel doubles as the flap and swings
+      open on click. Swap the two asset paths below for the real files:
+        - ./assets/wax-seal.png        (Wax Seal, transparent PNG)
+        - ./assets/floral-emboss.png   (Embossed Floral Texture, transparent PNG)
+    -->
     <div id="envelope-screen" class="envelope-screen">
-      <div class="envelope-wrap">
         <button id="envelope" class="envelope" type="button" aria-label="Open invitation">
-          <span class="envelope-back"></span>
-          <span class="envelope-card">
-            <span class="envelope-card-motif" aria-hidden="true">
-              <svg viewBox="0 0 100 100" width="46" height="46">
-                <path
-                  fill="none"
-                  stroke="#B08D57"
-                  stroke-width="1.6"
-                  d="M50,8 L58,42 L92,50 L58,58 L50,92 L42,58 L8,50 L42,42 Z"
-                />
-              </svg>
-            </span>
-            <span class="envelope-card-names" id="envelope-names">&nbsp;</span>
-          </span>
-          <span class="envelope-flap"></span>
-          <span class="envelope-seal" aria-hidden="true">
-            <svg viewBox="0 0 100 100" width="34" height="34">
-              <path fill="#B08D57" d="M50,10 L59,41 L91,50 L59,59 L50,90 L41,59 L9,50 L41,41 Z" />
+        <span class="env-panel env-panel--left"></span>
+        <span class="env-panel env-panel--right"></span>
+        <span class="env-panel env-panel--bottom"></span>
+
+        <svg class="env-seams" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="env-seam-a" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#caa15f" stop-opacity="0" />
+              <stop offset="50%" stop-color="#e9c894" stop-opacity="0.95" />
+              <stop offset="100%" stop-color="#caa15f" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="env-seam-b" x1="100" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#caa15f" stop-opacity="0" />
+              <stop offset="50%" stop-color="#e9c894" stop-opacity="0.95" />
+              <stop offset="100%" stop-color="#caa15f" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="0" x2="100" y2="100" stroke="url(#env-seam-a)" stroke-width="0.4" />
+          <line x1="100" y1="0" x2="0" y2="100" stroke="url(#env-seam-b)" stroke-width="0.4" />
             </svg>
+
+        <span class="env-panel env-flap-top"></span>
+
+        <span class="env-seal" aria-hidden="true">
+          <img src="./assets/wax-seal.png" alt="" class="env-seal-img" />
           </span>
+
+        <!-- kept (hidden) so js/i18n.js can still set the couple's names without erroring -->
+        <span class="envelope-card-names" id="envelope-names" hidden>&nbsp;</span>
         </button>
         <p class="envelope-hint" id="envelope-hint">Tap the envelope to open your invitation</p>
       </div>
@@ -238,7 +255,7 @@
           <p class="venue-name" id="venue-name">—</p>
           <p class="venue-address" id="venue-address">—</p>
           <div class="venue-image-wrap">
-            <img id="venue-image" src="assets/venue-placeholder.svg" alt="Venue" class="venue-image" />
+            <img id="venue-image" src="assets/mosque-image.png" alt="Venue" class="venue-image" />
           </div>
           <a id="map-link" class="map-card" href="#" target="_blank" rel="noopener">
             <iframe

@@ -74,7 +74,7 @@ const WEDDING_CONFIG = {
     // Replace with the real address or "lat,lng".
     // mapQuery: "El-Mosheer Tantawy Mosque",
     mapQuery: "30.017616828375548, 31.38366960736208",
-    image: "assets/mosque-image2.png",
+    image: "assets/mosque-image.png",
   },
 
   // ---------- Dress code ----------

@@ -16,6 +16,8 @@
   --color-gold: #b08d57; /* accent gold */
   --color-gold-deep: #8c6f42; /* hover / emphasis */
   --color-line: rgba(176, 141, 87, 0.35);
+  --color-envelope-paper: #f5ead2; /* warm envelope stock, slightly deeper than --color-bg */
+  --color-envelope-glow: 224, 178, 110; /* RGB triplet reused in rgba() for the seam glow */
 
   /* -------- Type -------- */
   /* --font-display: "Cormorant Garamond", serif; */
@@ -176,18 +178,17 @@ button {
 
 /* ==========================================================================
    ENVELOPE INTRO
+   Full-bleed "envelope back": four paper panels meet at the center in an X
+   fold. A warm gold glow radiates from the wax seal along the seams; the
+   left/right panels carry an embossed floral overlay. The top panel is the
+   flap and rotates open on click.
    ========================================================================== */
 .envelope-screen {
   position: fixed;
   inset: 0;
   z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-bg);
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(176, 141, 87, 0.08), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(176, 141, 87, 0.08), transparent 40%);
+  overflow: hidden;
+  background: var(--color-envelope-paper);
   transition:
     opacity var(--dur-overlay) ease,
     visibility 0s linear var(--dur-overlay);
@@ -198,114 +199,161 @@ button {
   pointer-events: none;
 }
 
-.envelope-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 26px;
-  padding: 0 24px;
-}
-
 .envelope {
-  position: relative;
-  width: min(78vw, 300px);
-  height: min(56vw, 210px);
-  border: 0;
-  background: transparent;
-  padding: 0;
-  perspective: 1200px;
-}
-
-.envelope-back {
   position: absolute;
   inset: 0;
-  background: var(--color-card);
-  border: 1px solid var(--color-line);
-  border-radius: 6px;
-  box-shadow: 0 18px 40px rgba(58, 46, 34, 0.14);
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  background: var(--color-envelope-paper);
+  perspective: 2000px;
 }
 
-.envelope-card {
+/* -------- the four back panels -------- */
+.env-panel {
   position: absolute;
-  left: 6%;
-  right: 6%;
-  top: 8%;
-  height: 82%;
-  background: var(--color-bg);
-  border: 1px solid var(--color-line);
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transform: translateY(6%);
-  transition: transform var(--dur-card) cubic-bezier(0.22, 0.85, 0.32, 1);
+  inset: 0;
+  background: var(--color-envelope-paper);
+}
+/* seam glow: a soft gold radial glow shared by every panel, centered on the
+   point where all four meet (i.e. right behind the wax seal) */
+.env-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(var(--color-envelope-glow), 0.6) 0%,
+    rgba(var(--color-envelope-glow), 0.25) 20%,
+    rgba(var(--color-envelope-glow), 0) 42%
+  );
+  pointer-events: none;
+}
+
+.env-panel--left {
+  clip-path: polygon(0 0, 0 100%, 50% 50%);
+  background-image: linear-gradient(100deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 45%);
+}
+.env-panel--right {
+  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+  background-image: linear-gradient(260deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 45%);
+}
+.env-panel--bottom {
+  clip-path: polygon(0 100%, 100% 100%, 50% 50%);
+  background-image: linear-gradient(0deg, rgba(58, 46, 34, 0.05), rgba(58, 46, 34, 0) 40%);
+}
+
+/* crisp corner-to-corner seam lines (see the inline <svg class="env-seams"> in the
+   markup) — sits above the static side/bottom panels but under the flap, so the
+   flap's own edge forms the top half of the "X" once it's back in the closed state */
+.env-seams {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
+  pointer-events: none;
 }
 
-.envelope-card-names {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--color-ink-soft);
-  letter-spacing: 0.04em;
-}
-
-.envelope-flap {
+/* embossed floral overlay along the outer edge of the side panels —
+   swap in the real asset at assets/floral-emboss.png (repeats vertically).
+   Path is ../assets/... because this stylesheet lives in css/, not the site root. */
+.env-panel--left::after,
+.env-panel--right::after {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 58%;
-  background: linear-gradient(160deg, #f0e4cc, var(--color-card));
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  inset: 0;
+  background-repeat: repeat-y;
+  background-size: 107px auto;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* .env-flap-top::after, */
+/* .env-panel--bottom::after {
+  background-image: url("../assets/floral-emboss.png");
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-y;
+  background-size: 107px auto;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+  pointer-events: none;
+  transform: rotate(-22deg);
+  background-position: right center;
+  right: 33%;
+} */
+
+.env-panel--left::after {
+  background-image: url("../assets/floral-emboss-mirror.png");
+  background-position: left center;
+  left: 5%;
+}
+.env-panel--right::after {
+  background-image: url("../assets/floral-emboss.png");
+  background-position: right center;
+  right: 5%;
+}
+
+/* -------- animated top flap -------- */
+.env-flap-top {
   transform-origin: top center;
-  border: 1px solid var(--color-line);
-  border-bottom: none;
+  transform: rotateX(0deg);
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0) 45%);
   transition: transform var(--dur-flap) cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
-  transform: rotateX(0deg);
 }
 
-.envelope-seal {
+/* -------- wax seal -------- */
+.env-seal {
   position: absolute;
-  top: calc(29% - 17px);
+  top: 46%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 3;
+  width: min(30vw, 118px);
   transition:
     opacity var(--dur-seal) ease,
     transform var(--dur-seal) ease;
-  filter: drop-shadow(0 2px 4px rgba(58, 46, 34, 0.25));
+  filter: drop-shadow(0 6px 14px rgba(58, 46, 34, 0.35));
+}
+.env-seal-img {
+  width: 100%;
+  display: block;
 }
 
 /* --- opening state --- */
-.envelope-screen.is-opening .envelope-seal,
-.envelope-screen.is-open .envelope-seal {
+.envelope-screen.is-opening .env-seal,
+.envelope-screen.is-open .env-seal {
   opacity: 0;
-  transform: translateX(-50%) scale(0.4);
+  transform: translate(-50%, -50%) scale(0.4);
 }
-.envelope-screen.is-opening .envelope-flap,
-.envelope-screen.is-open .envelope-flap {
-  transform: rotateX(-165deg);
-}
-.envelope-screen.is-opening .envelope-card,
-.envelope-screen.is-open .envelope-card {
-  transform: translateY(-118%);
+.envelope-screen.is-opening .env-flap-top,
+.envelope-screen.is-open .env-flap-top {
+  transform: rotateX(-160deg);
 }
 
 /* --- skip: remove transitions so the final state applies instantly --- */
-.envelope-screen.is-skip .envelope-seal,
-.envelope-screen.is-skip .envelope-flap,
-.envelope-screen.is-skip .envelope-card,
+.envelope-screen.is-skip .env-seal,
+.envelope-screen.is-skip .env-flap-top,
 .envelope-screen.is-skip {
   transition-duration: 0s !important;
 }
 
 .envelope-hint {
+  position: absolute;
+  left: 50%;
+  bottom: max(28px, env(safe-area-inset-bottom, 28px));
+  transform: translateX(-50%);
+  z-index: 4;
+  white-space: nowrap;
   font-size: 0.85rem;
   letter-spacing: 0.06em;
-  color: var(--color-ink-soft);
+  color: var(--color-gold-deep);
   animation: pulse-hint 2.4s ease-in-out infinite;
 }
 @keyframes pulse-hint {
