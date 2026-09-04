@@ -11,12 +11,13 @@
 window.Invite = window.Invite || {};
 
 Invite.envelope = (function () {
-  const DUR_FLAP = 900;    // matches --dur-flap
-  const DUR_CARD = 750;    // matches --dur-card
-  const DUR_OVERLAY = 650; // matches --dur-overlay
+  const DUR_FLAP = 2500; // Matches updated slower --dur-flap
+  const DUR_CARD = 750; // Matches --dur-card
+  const DUR_OVERLAY = 300; // Matches updated faster --dur-overlay
   // Flap and card animate simultaneously (no stagger), so wait for the
   // longer of the two, plus a small buffer before starting the overlay fade.
-  const SEQUENCE_TOTAL = Math.max(DUR_FLAP, DUR_CARD) + 120;
+  // const SEQUENCE_TOTAL = Math.max(DUR_FLAP, DUR_CARD) + 120;
+  const SEQUENCE_TOTAL = Math.min(DUR_FLAP, DUR_CARD) + 120;
 
   let screenEl, btn;
   let state = "closed"; // closed -> opening -> open

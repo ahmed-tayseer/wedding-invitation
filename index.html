@@ -7,6 +7,7 @@
     <meta name="description" content="You're invited to our wedding" />
 
     <!-- Fonts: elegant serif + calligraphic Arabic display, clean sans for body -->
+    <link rel="icon" href="./assets/floral-emboss-bottom.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -55,7 +56,8 @@
         - ./assets/floral-emboss.png   (Embossed Floral Texture, transparent PNG)
     -->
     <div id="envelope-screen" class="envelope-screen">
-        <button id="envelope" class="envelope" type="button" aria-label="Open invitation">
+      <button id="envelope" class="envelope" type="button" aria-label="Open invitation">
+        <span class="env-center-light" aria-hidden="true"></span>
         <span class="env-panel env-panel--left"></span>
         <span class="env-panel env-panel--right"></span>
         <span class="env-panel env-panel--bottom"></span>
@@ -75,19 +77,24 @@
           </defs>
           <line x1="0" y1="0" x2="100" y2="100" stroke="url(#env-seam-a)" stroke-width="0.4" />
           <line x1="100" y1="0" x2="0" y2="100" stroke="url(#env-seam-b)" stroke-width="0.4" />
-            </svg>
+        </svg>
 
         <span class="env-panel env-flap-top"></span>
 
         <span class="env-seal" aria-hidden="true">
           <img src="./assets/wax-seal.png" alt="" class="env-seal-img" />
-          </span>
+        </span>
 
         <!-- kept (hidden) so js/i18n.js can still set the couple's names without erroring -->
         <span class="envelope-card-names" id="envelope-names" hidden>&nbsp;</span>
-        </button>
-        <p class="envelope-hint" id="envelope-hint">Tap the envelope to open your invitation</p>
-      </div>
+      </button>
+      <p class="envelope-hint">
+        <svg class="hint-arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path fill="currentColor" d="M12 7l-7 7h14z" />
+        </svg>
+        <span id="envelope-hint">Tap the envelope to open your invitation</span>
+      </p>
+      <!-- </div> -->
     </div>
 
     <!-- ======================= MAIN SITE ======================= -->
@@ -95,9 +102,13 @@
       <!-- ---------- HERO ---------- -->
       <section id="hero" class="section hero-section">
         <div class="section-inner hero-inner">
-          <p class="eyebrow" id="hero-eyebrow">The Wedding Of</p>
+          <!-- <p class="eyebrow" id="hero-eyebrow">Wedding Day</p>
+          <h1 class="display-title" id="hero-names">Ahmed &amp; Safa</h1>
+          <p class="hero-names" id="hero-title">03.10.2026</p> -->
           <h1 class="display-title" id="hero-title">Wedding Day</h1>
-          <p class="hero-names" id="hero-names">Ahmed &amp; Sara</p>
+          <p class="hero-names" id="hero-names">Ahmed &amp; Safa</p>
+          <p class="eyebrow" id="hero-eyebrow">03.10.2026</p>
+
           <div class="ornament" aria-hidden="true">
             <svg viewBox="0 0 200 24" width="140" height="16">
               <line x1="0" y1="12" x2="80" y2="12" stroke="#B08D57" stroke-width="1" />
@@ -113,8 +124,8 @@
           <p class="hero-date" id="hero-date">Date</p>
         </div>
 
-        <img src="./assets/right-flowers2.png" class="right-flowers" alt="" />
-        <img src="./assets/left-flowers3.png" class="left-flowers" alt="" />
+        <img src="./assets/right-flowers.png" class="right-flowers" alt="" />
+        <img src="./assets/left-flowers.png" class="left-flowers" alt="" />
       </section>
 
       <!-- d="M0,30 Q50,11 100,20 Q150,41 200,34 Q250,11 300,16 Q350,37 400,30 Q450,7 500,12 Q550,34 600,28 Q650,9 700,18 Q750,39 800,32 Q850,9 900,14 Q950,34 1000,26 Q1050,9 1100,20 Q1150,38 1200,28 L1200,0 L0,0 Z" -->

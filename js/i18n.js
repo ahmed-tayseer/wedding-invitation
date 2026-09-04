@@ -47,12 +47,16 @@ Invite.i18n = (function () {
 
     // Envelope
     setText("envelope-names", coupleNames(lang));
-    setText("envelope-hint", lang === "ar"
-      ? "المس المظروف لفتح دعوتكم"
-      : "Tap the envelope to open your invitation");
+    setText(
+      "envelope-hint",
+      lang === "ar" ? "المس الظرف لفتح دعوتكم" : "Tap the envelope to open your invitation",
+    );
+    // setText("envelope-hint", lang === "ar" ? "المس الظروف لفتح دعوتكم" : "Tap to open");
 
     // Hero
-    setText("hero-eyebrow", lang === "ar" ? "حفل زفاف" : "The Wedding Of");
+    // setText("hero-eyebrow", lang === "ar" ? "حفل زفاف" : "The Wedding Of");
+    // setText("hero-eyebrow", lang === "ar" ? "٣.١٠.٢٠٢٦" : "03.10.2026");
+    setText("hero-eyebrow", lang === "ar" ? "03.10.2026" : "03.10.2026");
     setText("hero-title", cfg.hero.title[lang]);
     setText("hero-names", coupleNames(lang));
     setText("hero-date", cfg.dateDisplay[lang]);
@@ -101,11 +105,11 @@ Invite.i18n = (function () {
     setText("closing-names", coupleNames(lang));
 
     // Utility buttons + nav labels
-    setText("lang-toggle-label", lang === "ar" ? "EN" : "AR");
-    document.getElementById("lang-toggle").setAttribute(
-      "aria-label",
-      lang === "ar" ? "Switch to English" : "التبديل إلى العربية"
-    );
+    // setText("lang-toggle-label", lang === "ar" ? "EN" : "AR");
+    setText("lang-toggle-label", lang === "ar" ? "EN" : "عربي");
+    document
+      .getElementById("lang-toggle")
+      .setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
     if (Invite.nav && Invite.nav.updateLabels) Invite.nav.updateLabels(lang);
 
     document.title = coupleNames(lang);
@@ -121,5 +125,13 @@ Invite.i18n = (function () {
     if (btn) btn.addEventListener("click", toggle);
   }
 
-  return { init, apply, toggle, get current() { return lang; }, coupleNames };
+  return {
+    init,
+    apply,
+    toggle,
+    get current() {
+      return lang;
+    },
+    coupleNames,
+  };
 })();

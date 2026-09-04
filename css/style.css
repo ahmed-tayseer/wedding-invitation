@@ -35,9 +35,9 @@
 
   /* -------- Envelope animation durations (mirrored in js/envelope.js) -------- */
   --dur-seal: 260ms;
-  --dur-flap: 900ms;
   --dur-card: 750ms;
-  --dur-overlay: 650ms;
+  --dur-flap: 2500ms;
+  --dur-overlay: 300ms;
 }
 
 html[dir="rtl"] {
@@ -91,24 +91,6 @@ button {
   /* background: var(--color-bg); */
 }
 
-.eyebrow {
-  font-family: var(--font-body);
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-  color: var(--color-gold-deep);
-  margin: 0 0 14px;
-}
-
-.display-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.6rem, 9vw, 3.6rem);
-  margin: 0 0 6px;
-  color: var(--color-ink);
-  letter-spacing: 0.01em;
-}
-
 .section-title {
   font-family: var(--font-display);
   font-weight: 600;
@@ -145,6 +127,10 @@ button {
   gap: 10px;
 }
 
+html:lang(en) .util-btn {
+  font-family: "Aref Ruqaa", serif;
+}
+
 .util-btn {
   width: 42px;
   height: 42px;
@@ -156,7 +142,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   box-shadow: 0 4px 14px rgba(58, 46, 34, 0.08);
@@ -207,6 +193,9 @@ button {
   border: 0;
   padding: 0;
   background: var(--color-envelope-paper);
+  /* background-image: url(../assets/hero.jpg); */
+  background-size: cover;
+  background-position: center;
   perspective: 2000px;
 }
 
@@ -215,6 +204,7 @@ button {
   position: absolute;
   inset: 0;
   background: var(--color-envelope-paper);
+  transition: transform var(--dur-flap) cubic-bezier(0.25, 1, 0.5, 1);
 }
 /* seam glow: a soft gold radial glow shared by every panel, centered on the
    point where all four meet (i.e. right behind the wax seal) */
@@ -225,21 +215,24 @@ button {
   background: radial-gradient(
     circle at 50% 50%,
     rgba(var(--color-envelope-glow), 0.6) 0%,
-    rgba(var(--color-envelope-glow), 0.25) 20%,
-    rgba(var(--color-envelope-glow), 0) 42%
+    rgba(var(--color-envelope-glow), 0.25) 11%,
+    rgba(var(--color-envelope-glow), 0) 47%
   );
   pointer-events: none;
 }
 
 .env-panel--left {
+  transform-origin: left center;
   clip-path: polygon(0 0, 0 100%, 50% 50%);
   background-image: linear-gradient(100deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 45%);
 }
 .env-panel--right {
+  transform-origin: right center;
   clip-path: polygon(100% 0, 100% 100%, 50% 50%);
   background-image: linear-gradient(260deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 45%);
 }
 .env-panel--bottom {
+  transform-origin: bottom center;
   clip-path: polygon(0 100%, 100% 100%, 50% 50%);
   background-image: linear-gradient(0deg, rgba(58, 46, 34, 0.05), rgba(58, 46, 34, 0) 40%);
 }
@@ -271,22 +264,6 @@ button {
   pointer-events: none;
 }
 
-/* .env-flap-top::after, */
-/* .env-panel--bottom::after {
-  background-image: url("../assets/floral-emboss.png");
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-repeat: repeat-y;
-  background-size: 107px auto;
-  mix-blend-mode: multiply;
-  opacity: 0.8;
-  pointer-events: none;
-  transform: rotate(-22deg);
-  background-position: right center;
-  right: 33%;
-} */
-
 .env-panel--left::after {
   background-image: url("../assets/floral-emboss-mirror.png");
   background-position: left center;
@@ -298,24 +275,48 @@ button {
   right: 5%;
 }
 
+/* .env-flap-top::after,
+.env-panel--bottom::after {
+  background-image: url("../assets/floral-emboss-bottom.png");
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-x;
+  background-size: 113px auto;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+  pointer-events: none;
+  transform: rotate(12deg);
+}
+.env-panel--bottom::after {
+  background-position: bottom right;
+  right: 24%;
+  bottom: 18%;
+}
+.env-flap-top::after {
+  background-position: top;
+  right: 38%;
+  top: 17%;
+} */
+
 /* -------- animated top flap -------- */
 .env-flap-top {
   transform-origin: top center;
   transform: rotateX(0deg);
   clip-path: polygon(0 0, 100% 0, 50% 50%);
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0) 45%);
-  transition: transform var(--dur-flap) cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
 }
 
 /* -------- wax seal -------- */
 .env-seal {
   position: absolute;
-  top: 46%;
+  /* top: 46%; */
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  width: min(30vw, 118px);
+  width: min(30vw, 115px);
   transition:
     opacity var(--dur-seal) ease,
     transform var(--dur-seal) ease;
@@ -326,19 +327,39 @@ button {
   display: block;
 }
 
-/* --- opening state --- */
+/* --- opening state: all 4 panels open slightly together --- */
+/* Hide seam lines immediately when envelope starts opening */
+.envelope-screen.is-opening .env-seams,
+.envelope-screen.is-open .env-seams {
+  display: none;
+}
+
 .envelope-screen.is-opening .env-seal,
 .envelope-screen.is-open .env-seal {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.4);
 }
+
 .envelope-screen.is-opening .env-flap-top,
 .envelope-screen.is-open .env-flap-top {
-  transform: rotateX(-160deg);
+  transform: rotateX(-30deg);
+}
+.envelope-screen.is-opening .env-panel--bottom,
+.envelope-screen.is-open .env-panel--bottom {
+  transform: rotateX(30deg);
+}
+.envelope-screen.is-opening .env-panel--left,
+.envelope-screen.is-open .env-panel--left {
+  transform: rotateY(-30deg);
+}
+.envelope-screen.is-opening .env-panel--right,
+.envelope-screen.is-open .env-panel--right {
+  transform: rotateY(30deg);
 }
 
-/* --- skip: remove transitions so the final state applies instantly --- */
+/* --- skip state --- */
 .envelope-screen.is-skip .env-seal,
+.envelope-screen.is-skip .env-panel,
 .envelope-screen.is-skip .env-flap-top,
 .envelope-screen.is-skip {
   transition-duration: 0s !important;
@@ -351,11 +372,31 @@ button {
   transform: translateX(-50%);
   z-index: 4;
   white-space: nowrap;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   color: var(--color-gold-deep);
   animation: pulse-hint 2.4s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
+
+.hint-arrow {
+  display: block;
+  animation: bounce-up 1.8s ease-in-out infinite;
+}
+
+@keyframes bounce-up {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
 @keyframes pulse-hint {
   0%,
   100% {
@@ -367,11 +408,50 @@ button {
 }
 
 /* ==========================================================================
+   CENTER LIGHT BLOOM
+   ========================================================================== */
+.env-center-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(60vw, 360px);
+  height: min(60vw, 360px);
+  transform: translate(-50%, -50%) scale(0.2);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    #ffffff 0%,
+    rgba(255, 245, 220, 0.95) 30%,
+    rgba(224, 178, 110, 0.7) 60%,
+    rgba(245, 234, 210, 0) 75%
+  );
+  opacity: 0;
+  z-index: 0; /* Sits behind the envelope panels */
+  pointer-events: none;
+  filter: blur(6px);
+  transition:
+    opacity var(--dur-flap) ease-out,
+    transform var(--dur-flap) cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Light appears and expands when panels rotate open */
+.envelope-screen.is-opening .env-center-light,
+.envelope-screen.is-open .env-center-light {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Instant hide on skip */
+.envelope-screen.is-skip .env-center-light {
+  transition-duration: 0s !important;
+}
+
+/* ==========================================================================
    SITE REVEAL
    ========================================================================== */
 .site {
   animation: site-fade-in 700ms ease both;
-  overflow-x: clip; /* Strictly clips horizontal overflow without breaking vertical bleed */
+  overflow-x: clip;
   position: relative;
   width: 100%;
 }
@@ -408,7 +488,7 @@ button {
   /* background-image:
     radial-gradient(circle at 50% 0%, rgba(176, 141, 87, 0.1), transparent 55%), url(./action-img-min.jpg); */
   /* background-image: url(../assets/hero1.jpg); */
-  background-image: url(../assets/hero4.png);
+  background-image: url(../assets/hero.jpg);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -434,13 +514,39 @@ button {
   z-index: 4; /* stays above the fade layer even if it overlaps on short viewports */
   padding-top: var(--section-pad-y);
 }
+
+.display-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.24rem, 4vw, 1.9rem);
+  color: var(--color-gold-deep);
+  letter-spacing: 0.18em;
+  /* margin: 4px 0 6px; */
+  /* margin: 0 0 14px; */
+  margin: 0 0 0px;
+}
+
 .hero-names {
   font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.75rem, 9vw, 3.6rem);
+  margin: 10px 0 10px;
+  color: var(--color-ink);
+  letter-spacing: 0.01em;
   font-style: italic;
-  font-size: clamp(1.3rem, 4.5vw, 1.6rem);
-  color: var(--color-gold-deep);
-  margin: 4px 0 0;
 }
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  /* font-size: clamp(1.4rem, 4vw, 1.9rem); */
+  font-size: clamp(1.3rem, 4.5vw, 1.6rem);
+  margin: 4px 0 0;
+  margin: 0px 0 0;
+  color: var(--color-gold-deep);
+  letter-spacing: 0.08em;
+}
+
 html[dir="rtl"] .hero-names {
   font-style: normal;
 }
@@ -452,10 +558,9 @@ html[dir="rtl"] .hero-names {
 }
 
 #guest-message-start {
-  /* position: relative; */
-  --font-display: "Aref Ruqaa", serif;
-  /* margin: -29px 0 40px; */
+  font-family: "Aref Ruqaa", serif;
   margin: -1.8rem 0 2.5rem;
+  /* margin: -29px 0 40px; */
 }
 /* #guest-message-start::after {
   content: "";

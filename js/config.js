@@ -88,12 +88,14 @@ const WEDDING_CONFIG = {
 
   // ---------- RSVP ----------
   rsvp: {
-    title: { en: "RSVP", ar: "تأكيد الحضور" },
+    // title: { en: "RSVP", ar: "تأكيد الحضور" },
+    title: { en: "Confirm Your Attendance", ar: "تأكيد الحضور" },
     subtitle: {
       en: "Kindly let us know if you'll be joining us.",
       ar: "يرجى تأكيد حضوركم لنا.",
     },
-    buttonLabel: { en: "RSVP Now", ar: "أكد حضورك" },
+    // buttonLabel: { en: "RSVP Now", ar: "أكد حضورك" },
+    buttonLabel: { en: "Confirm Attendance", ar: "أكد حضورك" },
     // ⚠️ REQUIRED: paste your deployed Google Apps Script Web App URL here.
     // See README.md for the exact Apps Script code this form expects.
     scriptURL: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE",
