@@ -51,12 +51,9 @@ Invite.i18n = (function () {
       "envelope-hint",
       lang === "ar" ? "المس الظرف لفتح دعوتكم" : "Tap the envelope to open your invitation",
     );
-    // setText("envelope-hint", lang === "ar" ? "المس الظروف لفتح دعوتكم" : "Tap to open");
 
     // Hero
-    // setText("hero-eyebrow", lang === "ar" ? "حفل زفاف" : "The Wedding Of");
-    // setText("hero-eyebrow", lang === "ar" ? "٣.١٠.٢٠٢٦" : "03.10.2026");
-    setText("hero-eyebrow", lang === "ar" ? "03.10.2026" : "03.10.2026");
+    setText("hero-eyebrow", cfg.date[lang]);
     setText("hero-title", cfg.hero.title[lang]);
     setText("hero-names", coupleNames(lang));
     setText("hero-date", cfg.dateDisplay[lang]);

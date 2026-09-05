@@ -8,6 +8,34 @@
  * ============================================================
  */
 
+function formatDateDisplay(inputDate) {
+  const date = new Date(inputDate);
+
+  // --- English formatting ---
+  const enWeekday = new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);
+  const enRest = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+  const enFormatted = `${enWeekday} - ${enRest}`;
+
+  // --- Arabic formatting (using ar-EG with Eastern Arabic numerals) ---
+  const arWeekday = new Intl.DateTimeFormat("ar-EG-u-nu-arab", { weekday: "long" }).format(date);
+  const arDay = new Intl.DateTimeFormat("ar-EG-u-nu-arab", { day: "numeric" }).format(date);
+  const arMonth = new Intl.DateTimeFormat("ar-EG-u-nu-arab", { month: "long" }).format(date);
+  const arYear = new Intl.DateTimeFormat("ar-EG-u-nu-arab", { year: "numeric" }).format(date);
+  const arFormatted = `${arWeekday} - ${arDay} ${arMonth} ${arYear}`;
+
+  return {
+    dateDisplay: {
+      en: enFormatted,
+      ar: arFormatted,
+    },
+  };
+}
+
+const WEDDING_DATE = new Date("2026-10-09T20:30:00"); // ISO date used by the countdown — EDIT THIS to the real date/time.
 const WEDDING_CONFIG = {
   // ---------- Couple ----------
   couple: {
@@ -19,11 +47,18 @@ const WEDDING_CONFIG = {
 
   // ---------- Date & time ----------
   // ISO date used by the countdown — EDIT THIS to the real date/time.
-  weddingDateISO: "2026-10-03T20:30:00",
-  dateDisplay: {
-    en: "Saturday - October 3, 2026",
-    ar: "السبت - ٣ أكتوبر ٢٠٢٦",
+  weddingDateISO: WEDDING_DATE.toISOString(),
+  // date: { en: "03.10.2026", ar: "٣-١٠-٢٠٢٦" },
+  // date: { en: "03.10.2026", ar: "03.10.2026" },
+  date: {
+    en: WEDDING_DATE.toLocaleDateString("en-UK").replaceAll("/", "."),
+    ar: WEDDING_DATE.toLocaleDateString("en-UK").replaceAll("/", "."),
   },
+  // dateDisplay: {
+  //   en: "Saturday - October 3, 2026",
+  //   ar: "السبت - ٣ أكتوبر ٢٠٢٦",
+  // },
+  ...formatDateDisplay(WEDDING_DATE),
 
   // ---------- Hero section ----------
   hero: {
@@ -57,7 +92,7 @@ const WEDDING_CONFIG = {
       { time: "8:30 PM", en: "Guest Arrival", ar: "استقبال الضيوف" },
       { time: "8:45 PM", en: "Ceremony", ar: "حفل العقد" },
       { time: "9:00 PM", en: "Photography", ar: "التصوير" },
-      { time: "9:30 PM", en: "Dinner Reception", ar: "حفل العشاء" },
+      // { time: "9:30 PM", en: "Dinner Reception", ar: "حفل العشاء" },
       { time: "10:00 PM", en: "Farewell", ar: "الوداع" },
     ],
   },
@@ -98,7 +133,8 @@ const WEDDING_CONFIG = {
     buttonLabel: { en: "Confirm Attendance", ar: "أكد حضورك" },
     // ⚠️ REQUIRED: paste your deployed Google Apps Script Web App URL here.
     // See README.md for the exact Apps Script code this form expects.
-    scriptURL: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE",
+    scriptURL:
+      "https://script.google.com/macros/s/AKfycbxnwgSNnIVSTu1NJq1gp8odAybf6iSQV-esszSPdRuPIV7YX5oX6TEVfWzWQ9iglq-pEQ/exec",
     form: {
       name: { en: "Full Name", ar: "الاسم الكامل" },
       guests: { en: "Number of Guests", ar: "عدد الضيوف" },
@@ -121,7 +157,7 @@ const WEDDING_CONFIG = {
   // ---------- Background music ----------
   music: {
     // Add your own royalty-free mp3 at this path.
-    // src: "assets/background-music.mp3",
+    src: "assets/background-sound.mp3",
   },
 
   // ---------- Floating bottom navigation ----------
