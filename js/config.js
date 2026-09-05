@@ -69,8 +69,10 @@ const WEDDING_CONFIG = {
   guestMessage: {
     title: { en: "You're Invited", ar: "أنتم مدعوون" },
     body: {
-      en: "With hearts full of joy, we invite you to share in the beginning of our forever. Your presence would mean the world to us as we celebrate this new chapter together.",
-      ar: "بقلوب مفعمة بالفرح، ندعوكم لمشاركتنا بداية حياتنا معًا. وجودكم معنا سيعني لنا الكثير ونحن نحتفل بهذا الفصل الجديد.",
+      // en: "With hearts full of joy, we invite you to share in the beginning of our forever. Your presence would mean the world to us as we celebrate this new chapter together.",
+      en: "As we take this next big step, we can’t imagine doing it without the people who mean the most to us. Come celebrate the beginning of our forever and share in a day full of love, joy, and new memories.",
+      // ar: "بقلوب مفعمة بالفرح، ندعوكم لمشاركتنا بداية حياتنا معًا. وجودكم معنا سيعني لنا الكثير ونحن نحتفل بهذا الفصل الجديد.",
+      ar: "ونحن نخطو هذه الخطوة الكبيرة في حياتنا، لا يمكننا تخيل هذا اليوم دون وجود الأشخاص الأقرب إلى قلوبنا. شاركونا بداية رحلتنا الأبدية، ولنتقاسم معاً يوماً يفيض بالحب والبهجة والذكريات السعيدة.",
     },
   },
 
@@ -116,8 +118,10 @@ const WEDDING_CONFIG = {
   dressCode: {
     title: { en: "Dress Code", ar: "الزي المفضل" },
     body: {
-      en: "We kindly invite you to dress in elegant, modest attire. Soft neutrals, ivory, and gold tones are especially welcome.",
-      ar: "يسعدنا أن يحضر ضيوفنا الكرام بإطلالة أنيقة ومحتشمة. الألوان الهادئة والعاجية والذهبية موضع ترحيب خاص.",
+      // en: "We kindly invite you to dress in elegant, modest attire. Soft neutrals, ivory, and gold tones are especially welcome.",
+      // ar: "يسعدنا أن يحضر ضيوفنا الكرام بإطلالة أنيقة ومحتشمة. الألوان الهادئة والعاجية والذهبية موضع ترحيب خاص.",
+      en: "We kindly invite you to dress in elegant, modest attire. Soft neutrals tones are especially welcome.",
+      ar: "يسعدنا أن يحضر ضيوفنا الكرام بإطلالة أنيقة ومحتشمة. الألوان الهادئة موضع ترحيب خاص.",
     },
   },
 

@@ -535,6 +535,11 @@ html:lang(en) .util-btn {
   letter-spacing: 0.01em;
   font-style: italic;
 }
+/* for arabic text */
+html[dir="rtl"] .hero-names {
+  font-style: normal;
+  letter-spacing: normal;
+}
 
 .eyebrow {
   font-family: var(--font-display);
