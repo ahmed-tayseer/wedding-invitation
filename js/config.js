@@ -35,7 +35,7 @@ function formatDateDisplay(inputDate) {
   };
 }
 
-const WEDDING_DATE = new Date("2026-10-09T20:30:00"); // ISO date used by the countdown — EDIT THIS to the real date/time.
+const WEDDING_DATE = new Date("2026-10-03T20:30:00"); // ISO date used by the countdown — EDIT THIS to the real date/time.
 const WEDDING_CONFIG = {
   // ---------- Couple ----------
   couple: {
