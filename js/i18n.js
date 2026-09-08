@@ -53,10 +53,10 @@ Invite.i18n = (function () {
     );
 
     // Hero
-    setText("hero-eyebrow", cfg.date[lang]);
+    setText("hero-eyebrow", cfg.dateDisplay[lang]);
     setText("hero-title", cfg.hero.title[lang]);
     setText("hero-names", coupleNames(lang));
-    setText("hero-date", cfg.dateDisplay[lang]);
+    setText("hero-date", cfg.time[lang]);
 
     // Guest message
     setText("guest-eyebrow", "—");

@@ -24,6 +24,21 @@ Invite.rsvp = (function () {
 
     if (!overlay || !openBtn) return;
 
+    // Real-time clamping on the guest count input
+    const guestsInput = document.getElementById("input-guests");
+    if (guestsInput) {
+      guestsInput.addEventListener("input", () => {
+        let val = parseInt(guestsInput.value, 10);
+        if (val > 10) guestsInput.value = 10;
+      });
+
+      guestsInput.addEventListener("blur", () => {
+        let val = parseInt(guestsInput.value, 10);
+        if (!val || val < 1) guestsInput.value = 1;
+        if (val > 10) guestsInput.value = 10;
+      });
+    }
+
     openBtn.addEventListener("click", open);
     closeBtn.addEventListener("click", close);
     overlay.addEventListener("click", (e) => {
@@ -59,9 +74,13 @@ Invite.rsvp = (function () {
     const lang = Invite.i18n ? Invite.i18n.current : "en";
     const t = WEDDING_CONFIG.rsvp.form;
 
+    // Sanitize and strictly clamp guest number between 1 and 10
+    let rawGuests = parseInt(document.getElementById("input-guests").value, 10);
+    let clampedGuests = Math.min(Math.max(isNaN(rawGuests) ? 1 : rawGuests, 1), 10);
+
     const data = {
       name: document.getElementById("input-name").value.trim(),
-      guests: document.getElementById("input-guests").value,
+      guests: clampedGuests,
       attending: form.querySelector('input[name="attending"]:checked').value,
       message: document.getElementById("input-message").value.trim(),
       language: lang,

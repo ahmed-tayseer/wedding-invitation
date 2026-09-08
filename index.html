@@ -3,11 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Ahmed & Safaa - Wedding Invitation</title>
+    <!-- <title>Ahmed & Safaa - Wedding Invitation</title> -->
+    <title>Wedding Invitation</title>
     <meta name="description" content="You're invited to our wedding" />
 
+    <!-- Open Graph / WhatsApp / Facebook Link Preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ahmed-safaa-wedding.vercel.app/" />
+    <meta property="og:title" content="Ahmed & Safaa — Wedding Invitation" />
+    <meta property="og:description" content="You're invited to celebrate our wedding with us." />
+
+    <!-- MUST be a full absolute URL for WhatsApp/iMessage to load it -->
+    <meta
+      property="og:image"
+      content="https://ahmed-safaa-wedding.vercel.app/assets/preview-envelope.webp"
+    />
+    <!-- <meta property="og:image" content="/assets/preview-envelope.webp" /> -->
+    <meta property="og:image:width" content="1212" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- pre load hero image -->
+    <link rel="preload" as="image" href="assets/hero.webp" type="image/webp" />
+    <link rel="preload" href="assets/floral-emboss.webp" as="image" />
+    <link rel="preload" href="assets/floral-emboss-mirror.webp" as="image" />
+
     <!-- Fonts: elegant serif + calligraphic Arabic display, clean sans for body -->
-    <link rel="icon" href="./assets/floral-emboss-bottom.png" />
+    <link rel="icon" href="./assets/floral-emboss-bottom.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -59,8 +80,8 @@
       radiates from the wax seal along the seams; the left/right panels carry
       an embossed floral overlay. The top panel doubles as the flap and swings
       open on click. Swap the two asset paths below for the real files:
-        - ./assets/wax-seal.png        (Wax Seal, transparent PNG)
-        - ./assets/floral-emboss.png   (Embossed Floral Texture, transparent PNG)
+        - ./assets/wax-seal.webp        (Wax Seal, transparent webp)
+        - ./assets/floral-emboss.webp   (Embossed Floral Texture, transparent webp)
     -->
     <div id="envelope-screen" class="envelope-screen">
       <button id="envelope" class="envelope" type="button" aria-label="Open invitation">
@@ -89,7 +110,7 @@
         <span class="env-panel env-flap-top"></span>
 
         <span class="env-seal" aria-hidden="true">
-          <img src="./assets/wax-seal.png" alt="" class="env-seal-img" />
+          <img src="./assets/wax-seal.webp" alt="" class="env-seal-img" />
         </span>
 
         <!-- kept (hidden) so js/i18n.js can still set the couple's names without erroring -->
@@ -131,8 +152,8 @@
           <p class="hero-date" id="hero-date">Date</p>
         </div>
 
-        <img src="./assets/right-flowers.png" class="right-flowers" alt="" />
-        <img src="./assets/left-flowers.png" class="left-flowers" alt="" />
+        <img src="./assets/right-flowers.webp" class="right-flowers" alt="" />
+        <img src="./assets/left-flowers.webp" class="left-flowers" alt="" />
       </section>
 
       <!-- d="M0,30 Q50,11 100,20 Q150,41 200,34 Q250,11 300,16 Q350,37 400,30 Q450,7 500,12 Q550,34 600,28 Q650,9 700,18 Q750,39 800,32 Q850,9 900,14 Q950,34 1000,26 Q1050,9 1100,20 Q1150,38 1200,28 L1200,0 L0,0 Z" -->
@@ -273,7 +294,7 @@
           <p class="venue-name" id="venue-name">—</p>
           <p class="venue-address" id="venue-address">—</p>
           <div class="venue-image-wrap">
-            <img id="venue-image" src="assets/mosque-image.png" alt="Venue" class="venue-image" />
+            <img id="venue-image" src="assets/mosque-image.webp" alt="Venue" class="venue-image" />
           </div>
           <a id="map-link" class="map-card" href="#" target="_blank" rel="noopener">
             <iframe

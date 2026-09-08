@@ -193,7 +193,7 @@ html:lang(en) .util-btn {
   border: 0;
   padding: 0;
   background: var(--color-envelope-paper);
-  /* background-image: url(../assets/hero.jpg); */
+  /* background-image: url(../assets/hero.webp); */
   background-size: cover;
   background-position: center;
   perspective: 2000px;
@@ -250,7 +250,7 @@ html:lang(en) .util-btn {
 }
 
 /* embossed floral overlay along the outer edge of the side panels —
-   swap in the real asset at assets/floral-emboss.png (repeats vertically).
+   swap in the real asset at assets/floral-emboss.webp (repeats vertically).
    Path is ../assets/... because this stylesheet lives in css/, not the site root. */
 .env-panel--left::after,
 .env-panel--right::after {
@@ -265,19 +265,19 @@ html:lang(en) .util-btn {
 }
 
 .env-panel--left::after {
-  background-image: url("../assets/floral-emboss-mirror.png");
+  background-image: url("../assets/floral-emboss-mirror.webp");
   background-position: left center;
   left: 5%;
 }
 .env-panel--right::after {
-  background-image: url("../assets/floral-emboss.png");
+  background-image: url("../assets/floral-emboss.webp");
   background-position: right center;
   right: 5%;
 }
 
 /* .env-flap-top::after,
 .env-panel--bottom::after {
-  background-image: url("../assets/floral-emboss-bottom.png");
+  background-image: url("../assets/floral-emboss-bottom.webp");
   content: "";
   position: absolute;
   inset: 0;
@@ -486,9 +486,9 @@ html:lang(en) .util-btn {
   align-items: center;
   /* background: radial-gradient(circle at 50% 0%, rgba(176, 141, 87, 0.1), transparent 55%), var(--color-bg); */
   /* background-image:
-    radial-gradient(circle at 50% 0%, rgba(176, 141, 87, 0.1), transparent 55%), url(./action-img-min.jpg); */
-  /* background-image: url(../assets/hero1.jpg); */
-  background-image: url(../assets/hero.jpg);
+    radial-gradient(circle at 50% 0%, rgba(176, 141, 87, 0.1), transparent 55%), url(./action-img-min.webp); */
+  /* background-image: url(../assets/hero1.webp); */
+  background-image: url(../assets/hero.webp);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -544,22 +544,25 @@ html[dir="rtl"] .hero-names {
 .eyebrow {
   font-family: var(--font-display);
   font-weight: 600;
-  /* font-size: clamp(1.4rem, 4vw, 1.9rem); */
-  font-size: clamp(1.3rem, 4.5vw, 1.6rem);
+  /* font-size: clamp(1.3rem, 4.5vw, 1.6rem); */
+  font-size: clamp(1.14rem, 4.5vw, 1.6rem);
   margin: 4px 0 0;
   margin: 0px 0 0;
   color: var(--color-gold-deep);
   letter-spacing: 0.08em;
+  /* letter-spacing: 0.04em; */
 }
 
-html[dir="rtl"] .hero-names {
-  font-style: normal;
+/* select .ornament that after eyebrow class */
+html[dir="rtl"] .eyebrow + .ornament {
+  margin-bottom: 10px;
 }
+
 .hero-date {
-  margin-top: 22px;
-  letter-spacing: 0.12em;
+  margin-top: 0px;
+  letter-spacing: 0.04em;
   color: var(--color-ink-soft);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 #guest-message-start {

@@ -28,14 +28,37 @@ function formatDateDisplay(inputDate) {
   const arFormatted = `${arWeekday} - ${arDay} ${arMonth} ${arYear}`;
 
   return {
-    dateDisplay: {
-      en: enFormatted,
-      ar: arFormatted,
-    },
+    en: enFormatted,
+    ar: arFormatted,
+  };
+}
+
+function formatTimeRange(startDate, endDate) {
+  const formatTime = (date, lang) => {
+    let hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    const isPM = hours >= 12;
+
+    hours = hours % 12 || 12; // Convert 24h to 12h format
+
+    if (lang === "ar") {
+      const period = isPM ? "م" : "ص";
+      return `${hours}:${minutes} ${period}`;
+    } else {
+      const period = isPM ? "PM" : "AM";
+      return `${hours}:${minutes} ${period}`;
+    }
+  };
+
+  return {
+    en: `${formatTime(startDate, "en")} - ${formatTime(endDate, "en")}`,
+    ar: `${formatTime(startDate, "ar")} - ${formatTime(endDate, "ar")}`,
   };
 }
 
 const WEDDING_DATE = new Date("2026-10-03T20:30:00"); // ISO date used by the countdown — EDIT THIS to the real date/time.
+const WEEDING_END_DATE = new Date("2026-10-03T22:00:00");
+
 const WEDDING_CONFIG = {
   // ---------- Couple ----------
   couple: {
@@ -48,17 +71,19 @@ const WEDDING_CONFIG = {
   // ---------- Date & time ----------
   // ISO date used by the countdown — EDIT THIS to the real date/time.
   weddingDateISO: WEDDING_DATE.toISOString(),
-  // date: { en: "03.10.2026", ar: "٣-١٠-٢٠٢٦" },
-  // date: { en: "03.10.2026", ar: "03.10.2026" },
-  date: {
-    en: WEDDING_DATE.toLocaleDateString("en-UK").replaceAll("/", "."),
-    ar: WEDDING_DATE.toLocaleDateString("en-UK").replaceAll("/", "."),
-  },
+  // date: { en: "03.10.2026 - 8:30 pm", ar: "03.10.2026 - 8:30 م" },
+  // date: {
+  //   en: WEDDING_DATE.toLocaleDateString("en-UK").replaceAll("/", "."),
+  //   ar: WEDDING_DATE.toLocaleDateString("en-UK").replaceAll("/", "."),
+  // },
+  // time: { en: "8:30 PM - 10:00 PM", ar: "8:30 م - 10:00 م" },
+  time: formatTimeRange(WEDDING_DATE, WEEDING_END_DATE),
+
   // dateDisplay: {
   //   en: "Saturday - October 3, 2026",
   //   ar: "السبت - ٣ أكتوبر ٢٠٢٦",
   // },
-  ...formatDateDisplay(WEDDING_DATE),
+  dateDisplay: formatDateDisplay(WEDDING_DATE),
 
   // ---------- Hero section ----------
   hero: {
@@ -111,7 +136,7 @@ const WEDDING_CONFIG = {
     // Replace with the real address or "lat,lng".
     // mapQuery: "El-Mosheer Tantawy Mosque",
     mapQuery: "30.017616828375548, 31.38366960736208",
-    image: "assets/mosque-image.png",
+    image: "assets/mosque-image.webp",
   },
 
   // ---------- Dress code ----------
