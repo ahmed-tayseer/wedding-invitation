@@ -8,6 +8,22 @@
  * ============================================================
  */
 
+// Things to change for new weddings
+// - WEDDING_DATE
+// - WEEDING_END_DATE
+// - WEDDING_CONFIG.couple
+// - schedule
+// - location
+// - rsvp.scriptURL
+// - wax seal image
+// <meta property="og:url" content="https://ahmed-safaa-wedding.vercel.app/" />
+// <meta property="og:title" content="Ahmed & Safaa — Wedding Invitation" />
+// <meta
+//   property="og:image"
+//   content="https://ahmed-safaa-wedding.vercel.app/assets/preview-envelope.webp"
+// />
+// - preview-envelope.webp
+
 function formatDateDisplay(inputDate) {
   const date = new Date(inputDate);
 
