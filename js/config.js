@@ -111,9 +111,9 @@ const WEDDING_CONFIG = {
     title: { en: "You're Invited", ar: "أنتم مدعوون" },
     body: {
       // en: "With hearts full of joy, we invite you to share in the beginning of our forever. Your presence would mean the world to us as we celebrate this new chapter together.",
-      en: "As we take this next big step, we can’t imagine doing it without the people who mean the most to us. Come celebrate the beginning of our forever and share in a day full of love, joy, and new memories.",
+      en: "As we take this next big step, we can’t imagine doing it without the people who mean the most to us. Come celebrate this blessed day with us and share in a day full of love, joy, and new memories.",
       // ar: "بقلوب مفعمة بالفرح، ندعوكم لمشاركتنا بداية حياتنا معًا. وجودكم معنا سيعني لنا الكثير ونحن نحتفل بهذا الفصل الجديد.",
-      ar: "ونحن نخطو هذه الخطوة الكبيرة في حياتنا، لا يمكننا تخيل هذا اليوم دون وجود الأشخاص الأقرب إلى قلوبنا. شاركونا بداية رحلتنا الأبدية، ولنتقاسم معاً يوماً يفيض بالحب والبهجة والذكريات السعيدة.",
+      ar: "ونحن نخطو هذه الخطوة الكبيرة في حياتنا، لا يمكننا تخيل هذا اليوم دون وجود الأشخاص الأقرب إلى قلوبنا. شاركونا هذا اليوم المبارك، ولنتقاسم معاً يوماً يفيض بالحب والبهجة والذكريات السعيدة.",
     },
   },
 
@@ -133,9 +133,9 @@ const WEDDING_CONFIG = {
     title: { en: "Schedule of Events", ar: "برنامج الحفل" },
     items: [
       { time: "8:30 PM", en: "Guest Arrival", ar: "استقبال الضيوف" },
-      { time: "8:45 PM", en: "Ceremony", ar: "حفل العقد" },
-      { time: "9:00 PM", en: "Photography", ar: "التصوير" },
-      // { time: "9:30 PM", en: "Dinner Reception", ar: "حفل العشاء" },
+      { time: "8:45 PM", en: "Nikkah Ceremony", ar: "كتب الكتاب" },
+      { time: "9:00 PM", en: "Welcome Drinks", ar: "مشروبات" },
+      { time: "9:15 PM", en: "Photography", ar: "الصور التذكارية" },
       { time: "10:00 PM", en: "Farewell", ar: "الوداع" },
     ],
   },
@@ -159,10 +159,10 @@ const WEDDING_CONFIG = {
   dressCode: {
     title: { en: "Dress Code", ar: "الزي المفضل" },
     body: {
-      // en: "We kindly invite you to dress in elegant, modest attire. Soft neutrals, ivory, and gold tones are especially welcome.",
-      // ar: "يسعدنا أن يحضر ضيوفنا الكرام بإطلالة أنيقة ومحتشمة. الألوان الهادئة والعاجية والذهبية موضع ترحيب خاص.",
-      en: "We kindly invite you to dress in elegant, modest attire. Soft neutrals tones are especially welcome.",
-      ar: "يسعدنا أن يحضر ضيوفنا الكرام بإطلالة أنيقة ومحتشمة. الألوان الهادئة موضع ترحيب خاص.",
+      // en: "We kindly invite you to dress in elegant, modest attire. Soft neutrals tones are especially welcome.",
+      // ar: "يسعدنا أن يحضر ضيوفنا الكرام بإطلالة أنيقة ومحتشمة. الألوان الهادئة موضع ترحيب خاص.",
+      en: "Soft neutrals tones and modest attire are especially welcome.",
+      ar: "الألوان الهادئة والملابس المحتشمة موضع ترحيب خاص.",
     },
   },
 
